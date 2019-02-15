@@ -32,7 +32,6 @@ def home():
 
 @app.route("/similar/<lang>/", methods=['POST'])
 def w2v(lang):
-    import ipdb; ipdb.set_trace()
     data = request.json
     try:
         if data.get('word',None):
