@@ -14,7 +14,7 @@ ta_model = get_tamil_model()
 def get_similar(lang, word):
     if lang == 'ml':
         similar = ml_model.wv.most_similar(word, topn=10)
-        not_similar = ml_model.wv.most_similar(negative=word, topn=10)[::-1]
+        not_similar = ml_model.wv.most_similar(negative=[word], topn=10)[::-1]
         result = {
                     'similar': similar,
                     'not_similar': not_similar
@@ -32,6 +32,7 @@ def home():
 
 @app.route("/similar/<lang>/", methods=['POST'])
 def w2v(lang):
+    import ipdb; ipdb.set_trace()
     data = request.json
     try:
         if data.get('word',None):
